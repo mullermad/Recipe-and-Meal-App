@@ -1,9 +1,6 @@
-
 <template>
- <router-view ></router-view>
+    <h1>meals by ingrediant</h1>
 </template>
 
 <script setup>
-
-
 </script>

@@ -1,19 +1,30 @@
 <template>
-    <div class="flex justify-center p-8">
-   <input type="text" class="w-full rounded border-1 p-2 border-gray-200" 
-   placeholder="search for meals">
-   <div>
-
-   </div>
+    <div class=" p-8">
+   
+  <div class="gap-2 flex p-3 sm:flex sm:inline-block">
+    <router-link :to="{name:'byLetter',params:{letter}}" v-for="letter of letters" :key="letter" class="mt-2 ml-4">
+{{ letter}}
+</router-link>
+  </div>
+   
    </div>
 </template>
 
 <script setup>
-import { computed } from "vue";
+import { computed, onMounted } from "vue";
 import store from "../store";
+import axiosClient from '../axiosClient'
 
 
-const meals=computed(()=>store.state.meals);
+
+const letters="ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+
+onMounted(async()=>{
+  const response=await axiosClient.get('/list.php?i=list')
+  console.log(response.data);
+})
+
+
 
 </script>
 
