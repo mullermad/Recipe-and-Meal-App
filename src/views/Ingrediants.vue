@@ -2,7 +2,7 @@
     <div class="p-8">
         <h1 class="text-4xl font-bold mb-3">Ingrediants</h1>
    <div v-for="ing in ingrediants " :key="ing.idIngredient" class=" bg-white rounded p-3 mb-3 shadow">
-    <h1 class="text-2xl font-bold">{{ing.strIngredient}}</h1>
+    <div class="text-2xl font-bold">{{ing.strIngredient}}</div>
     <p>{{ing.strDescription}}</p>
 
    </div>
@@ -21,7 +21,7 @@ const ingrediants=ref([]);
 
 onMounted(()=>{
     axiosClient.get('list.php?i=list').then(({data})=>{
-        
+        debugger;
 ingrediants.value=data.meals;
     })
 

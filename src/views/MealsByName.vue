@@ -2,11 +2,11 @@
     <div class="p-8">
         <input v-model="keyword" @change="searchByName" type="text" class="w-full rounded border-2 p-2 border-gray-200" 
          placeholder="search for meals">
-    </div>
+       </div>
    
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-3 p-8">
-       <div v-for="meal in meals" :key="meal.idMeal" class="bg-white shadow-lg rounded-xl ">
-        <router-link :to="{name:'mealdetail',params:{id:meal.idMeal}}">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-3 p-8">
+         <div v-for="meal in meals" :key="meal.idMeal" class="bg-white shadow-lg rounded-xl ">
+          <router-link :to="{name:'mealdetail',params:{id:meal.idMeal}}">
 
        
          <img class="p-3 w-full h-48 object-cover rounded-t-xl" :src="meal.strMealThumb" alt="strMeal">
@@ -25,7 +25,7 @@
         
 
 
-       </div>
+         </div> 
     </div>
 </template>
 

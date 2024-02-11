@@ -31,3 +31,13 @@ export const searchMealsByLetter = ({ commit }, letter) => {
     commit("setMealsByLetter", data);
   });
 };
+
+//filter Meal by ingrediant
+export const searchMealsByIngrediant = ({ commit }, ing) => {
+  axiosClient.get(`filter.php?i=${ing}`).then(({ data }) => {
+    debugger;
+
+    //inside commit specify mutation name
+    commit("setMealsByIndrediant", data);
+  });
+};

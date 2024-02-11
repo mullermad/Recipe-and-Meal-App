@@ -17,7 +17,7 @@ import axiosClient from '../axiosClient'
 
 onMounted(async()=>{
   const response=await axiosClient.get('/list.php?i=list')
-  console.log(response.data);
+ 
 })
 
 
