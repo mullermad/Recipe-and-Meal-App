@@ -33,7 +33,7 @@ const routes = [
         component: Ingrediants,
       },
       {
-        path: "/byingrediant/:ingrediant?",
+        path: "/byingrediant/:ingrediant",
         name: "byIngrediant",
         component: MealsByIngrediant,
       },

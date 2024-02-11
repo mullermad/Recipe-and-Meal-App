@@ -16,7 +16,7 @@ import axiosClient from '../axiosClient.js'
 
 export const searchMeals = ({ commit }, keyword) => {
   axiosClient.get(`search.php?s=${keyword}`).then(({ data }) => {
-    debugger;
+ 
     //inside commit specify mutation name
     commit("setSearchMeals", data);
   });
@@ -25,8 +25,7 @@ export const searchMeals = ({ commit }, keyword) => {
 //by letter search done
 export const searchMealsByLetter = ({ commit }, letter) => {
   axiosClient.get(`search.php?f=${letter}`).then(({ data }) => {
-    debugger;
-   
+    
     //inside commit specify mutation name
     commit("setMealsByLetter", data);
   });
@@ -35,9 +34,9 @@ export const searchMealsByLetter = ({ commit }, letter) => {
 //filter Meal by ingrediant
 export const searchMealsByIngrediant = ({ commit }, ing) => {
   axiosClient.get(`filter.php?i=${ing}`).then(({ data }) => {
-    debugger;
+   
 
     //inside commit specify mutation name
-    commit("setMealsByIndrediant", data);
+    commit("setMealsByIndrediant", data.meals);
   });
 };

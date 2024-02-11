@@ -5,7 +5,7 @@
        </div>
    
         <div class="grid grid-cols-1 md:grid-cols-3 gap-3 p-8">
-         <div v-for="meal in meals" :key="meal.idMeal" class="bg-white shadow-lg rounded-xl ">
+         <div v-for="meal in meals" :key="meal.idMeal" class="bg-white h-screen shadow-lg rounded-xl ">
           <router-link :to="{name:'mealdetail',params:{id:meal.idMeal}}">
 
        
@@ -26,6 +26,7 @@
 
 
          </div> 
+        
     </div>
 </template>
 
@@ -34,6 +35,7 @@ import { computed, onMounted, ref } from "vue"
 
 import store from "../store"
 import {useRoute} from 'vue-router'
+
 const route=useRoute()
 const keyword=ref('')
 const meals=computed(()=>store.state.searchedMeals.meals)

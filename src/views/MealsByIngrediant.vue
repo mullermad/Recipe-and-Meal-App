@@ -1,30 +1,45 @@
 <template>
-    <div class="p-8">
-        <h1 class="text-4xl font-bold mb-3">Ingrediants</h1>
-   <div v-for="ing in ingrediants " :key="ing.idIngredient" class=" bg-white rounded p-3 mb-3 shadow">
-    <h1 class="text-2xl font-bold">{{ing.strIngredient}}</h1>
-    <p>{{ing.strDescription}}</p>
+   <div class="grid grid-cols-1 md:grid-cols-3 gap-3 p-8">
+   
+         <div v-for="meal in meals" :key="meal.idMeal" class="bg-white shadow-lg rounded-xl ">
+          
+         <img class="p-3 w-full h-48 object-cover rounded-t-xl" :src="meal.strMealThumb" alt="strMeal">
+         
+         <div class="p-3">
+          <h1 class=" font-bold">{{meal.strMeal}}</h1>  
+                 <p class="mb-4">{{meal.strInstructions}}</p>
 
-   </div>
-  </div>
+          <div class="gap-4">
+            <a class="border border-red-700 px-3 py-2 bg-red-500 text-white rounded-lg mr-2" :href="meal.strYoutube" target="_blank">YouTube</a>
+        
+           
+         </div>
+        
+         </div>
+        
+
+
+         </div> 
+
+         <div v-if="!meals.length">
+            <p>No Ingredient found here </p>
+         </div>
+    </div>
 </template>
 
 <script setup>
-import { onMounted, ref } from "vue";
-import axiosClient from "../axiosClient";
+import { computed, onMounted } from "vue"
+import { useRoute } from "vue-router";
+import store from "../store";
 
+const meals=computed(()=>store.state.searchedMealsByIngrediant);
 
-
-
-const ingrediants=ref([]);
-
-
+const route=useRoute();
 onMounted(()=>{
-    axiosClient.get('list.php?i=list').then(({data})=>{
-        
-ingrediants.value=data.meals;
-    })
-
+   
+ store.dispatch("searchMealsByIngrediant",route.params.ingrediant)
+ 
+ 
 })
 
 </script>
